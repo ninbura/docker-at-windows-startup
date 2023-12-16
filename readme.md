@@ -28,7 +28,8 @@ The purpose of this repository is to assist with setting up services in Linux & 
     - add your user to the docker user group
     - enable Docker via systemd
 4. ### Create a systemd service file to start your Docker containers at boot
-    - your service file must created in `/etc/systemd/system` (`sudo touch /etc/systemd/system/my-service.service`)
+    - your service file must created in `/etc/systemd/system`
+        - `sudo touch /etc/systemd/system/my-service.service`)
     - replace bracketed info fields with proper info
       ```service
       [Unit]
@@ -54,7 +55,7 @@ The purpose of this repository is to assist with setting up services in Linux & 
 6. ### create a scheduled task in Windows that starts your wsl image at boot
     1. clone this repository to a direcoty **in Windows**
     2. in the root of your cloned repository add a `config.json` with the follwing content (remove comment)
-    - ```json
+      ```json
       {
             "imageName": "your-wsl-image-name" // ie "Ubuntu"
       }
