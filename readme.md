@@ -3,6 +3,8 @@ The purpose of this repository is to assist with setting up services in Linux & 
 
 # prerequisites
 - administrator access in Windows
+- PowerShell 7+
+    - `winget install Microsoft.PowerShell`
 - root/sudo access in your WSL image
 - If you installed Docker Desktop at any point in the past you will have to do the following
     - [uninstall docker desktop](https://docs.docker.com/desktop/uninstall/)
