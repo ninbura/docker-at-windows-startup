@@ -17,7 +17,7 @@ The purpose of this repository is to assist with setting up services in Linux & 
     - this should be enabled by default
     - you can verify that this is case by checking you `wsl.conf` file in `/etc/wsl.conf`
     - Said configuration file should contain the following lines (if not, add them).
-    - ```conf
+      ```conf
       [boot]
       systemd=true
       ```
