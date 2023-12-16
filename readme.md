@@ -15,10 +15,10 @@ The purpose of this repository is to assist with setting up services in Linux & 
     - this should be enabled by default
     - you can verify that this is case by checking you `wsl.conf` file in `/etc/wsl.conf`
     - Said configuration file should contain the following lines (if not, add them).
-  ```conf
-  [boot]
-  systemd=true
-  ```
+    - ```conf
+      [boot]
+      systemd=true
+      ```
 2. ### [Install Docker](https://docs.docker.com/engine/install/ubuntu)
     - make sure to [uninstall old versions of Docker](https://docs.docker.com/engine/install/ubuntu/#uninstall-old-versions) first
     - After verifying that old versions have been uninstall, I recommend using their [convenience script](https://docs.docker.com/engine/install/ubuntu/#install-using-the-convenience-script) for installation.
@@ -28,23 +28,23 @@ The purpose of this repository is to assist with setting up services in Linux & 
 4. ### Create a systemd service file to start your Docker containers at boot
     - your service file must created in `/etc/systemd/system` (`sudo touch /etc/systemd/system/my-service.service)
     - replace bracketed info fields with proper info
-```service
-[Unit]
-Description=[description of service]
-Requires=docker.service
-After=docker.service
-
-[Service]
-Type=oneshot
-RemainAfterExit=yes
-WorkingDirectory=[directory where your docker-compose file lives from root]
-ExecStart=/bin/bash -c "docker compose up -d"
-ExecStop=/bin/bash -c "docker compose down"
-TimeoutStartSec=0
-
-[Install]
-WantedBy=multi-user.target
-```
+    - ```service
+      [Unit]
+      Description=[description of service]
+      Requires=docker.service
+      After=docker.service
+    
+      [Service]
+      Type=oneshot
+      RemainAfterExit=yes
+      WorkingDirectory=[directory where your docker-compose file lives from root]
+      ExecStart=/bin/bash -c "docker compose up -d"
+      ExecStop=/bin/bash -c "docker compose down"
+      TimeoutStartSec=0
+    
+      [Install]
+      WantedBy=multi-user.target
+      ```
 5. ### enable your custom service
 ```bash
 sudo systemctl enable my-service.service
