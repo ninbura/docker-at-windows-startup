@@ -11,11 +11,39 @@ The purpose of this repository is to assist with setting up services in Linux & 
   - re-install an image (ie Ubuntu from the Microsoft Store)
 
 # setup
-1. Verify that systemd is enabled in your wsl image.
+1. ### Verify that systemd is enabled in your wsl image.
   - this should be enabled by default
   - you can verify that this is case by checking you `wsl.conf` file in `/etc/wsl.conf`
-  - said configuration file should contain these lines
+  - Said configuration file should contain the following lines.
   ```conf
   [boot]
   systemd=true
-  ``` 
+  ```
+  - If not, add them.
+  - If wsl.conf does not exist, create it first.
+2. ### [Install Docker](https://docs.docker.com/engine/install/ubuntu)
+  - make sure to [uninstall old versions of Docker](https://docs.docker.com/engine/install/ubuntu/#uninstall-old-versions) first
+  - After verifying that old versions have been uninstall, I recommend using their [convenience script](https://docs.docker.com/engine/install/ubuntu/#install-using-the-convenience-script) for installation.
+3. ### [Follow Docker's post-installation steps](https://docs.docker.com/engine/install/linux-postinstall/)
+  - add your user to the docker user group
+  - enable Docker via systemd
+4. ### Create a systemd service file to start your Docker containers at boot of Linux
+- your service file must created in `/etc/systemd/system` (`sudo touch /etc/systemd/system/my-service.service)
+- replace bracketed info fields with proper info
+```service
+[Unit]
+Description=[description of service]
+Requires=docker.service
+After=docker.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+WorkingDirectory=[directory where your docker-compose file lives from root]
+ExecStart=/bin/bash -c "docker compose up -d"
+ExecStop=/bin/bash -c "docker compose down"
+TimeoutStartSec=0
+
+[Install]
+WantedBy=multi-user.target
+```
