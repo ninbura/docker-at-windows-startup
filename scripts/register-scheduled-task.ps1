@@ -20,7 +20,7 @@ function getScriptPath($taskName){
 function registerScheduledTask($taskName, $scriptPath){
   $trigger = New-ScheduledTaskTrigger -AtStartup
   $action = New-ScheduledTaskAction -Execute "pwsh" -Argument "-WindowStyle Hidden -Command `"& `"$scriptPath`"`""
-  
+
   Register-ScheduledTask -TaskName $taskName -Trigger $trigger  -Action $action -RunLevel Highest -Force;
 }
 
@@ -29,6 +29,8 @@ function main(){
   $taskName = "start-wsl"
   $scriptPath = getScriptPath $taskName
   registerScheduledTask $taskName $scriptPath
+
+  write-host ""
 
   write-host "$taskName scheduled task registered successfully`n" -ForegroundColor Green
   

@@ -1,6 +1,5 @@
 @echo off
 echo administrative permissions required, detecting permissions...
-echo.
 
 net session >nul 2>&1
 if %errorLevel% == 0 (
@@ -16,7 +15,8 @@ if %errorLevel% == 0 (
 
 set scriptPath=%~dp0scripts\register-scheduled-task.ps1
 
-echo "%scriptPath%"
+echo script path = %scriptPath%
+echo.
 
 pwsh -noprofile -executionpolicy bypass -file "%scriptPath%"
 
