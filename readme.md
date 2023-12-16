@@ -46,4 +46,6 @@ TimeoutStartSec=0
 WantedBy=multi-user.target
 ```
 5. ### enable your custom service
-    - `sudo systemctl enable my-service.service`
+```bash
+sudo systemctl enable my-service.service
+```
