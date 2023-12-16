@@ -1,5 +1,5 @@
 function startup(){
-  write-host "registering scheduled task..."
+  write-host "unregistering scheduled task..."
 }
 
 function quit(){
