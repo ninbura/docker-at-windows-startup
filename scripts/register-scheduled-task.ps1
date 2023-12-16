@@ -54,7 +54,6 @@ function main(){
   registerScheduledTask $taskName $scriptPath
 
   write-host ""
-
   write-host "$taskName scheduled task registered successfully`n" -ForegroundColor Green
   
   quit
