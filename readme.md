@@ -70,10 +70,14 @@ sudo systemctl enable my-service.service
 There's a lot that can go wrong here, it would be impossible to cover everyting. So, I'll just cover some basics. If your Docker / your containers aren't running, try the folling.
 1. verify that docker is running - `sudo systemctl status docker`
     - If Docker failed to start, try diagnosing with `sudo dockerd`.
-3. verify that your custom service is running - `sudo systemctl status my-service.service`
+2. verify that your custom service is running - `sudo systemctl status my-service.service`
     - If your custom service failed to start, try and troubleshoot the contents of the printed status.
-5. verify that your Windows scheduled task exectuted
+3. verify that your Windows scheduled task exectuted
     - there should be a `start-wsl.log` in the root of your cloned repository
     - if there is no log file you can view failed scheduled tasks in Windows' Event Viewer
-        - 
+        - Applications and Sevices Logs > Microsoft > Windows > TaskScheduler > Operational
+        - If there are no logs under `Operational`, enable them by right clicking `Operational` and selecting `Enable` (reboot afterwards).
+        - I suggest right clicking `Operational` and selecting "Filter current log", and filtering for Critical, Warning, & Error logs.
 
+# removal of scheduled task
+Simply right click `~unregister-scheduled-task.bat` in your cloned repo and run as administrator.
