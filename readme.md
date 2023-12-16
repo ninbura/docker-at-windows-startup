@@ -25,7 +25,7 @@ The purpose of this repository is to assist with setting up services in Linux & 
 3. ### [Follow Docker's post-installation steps](https://docs.docker.com/engine/install/linux-postinstall/)
     - add your user to the docker user group
     - enable Docker via systemd
-4. ### Create a systemd service file to start your Docker containers at boot of Linux
+4. ### Create a systemd service file to start your Docker containers at boot
     - your service file must created in `/etc/systemd/system` (`sudo touch /etc/systemd/system/my-service.service)
     - replace bracketed info fields with proper info
 ```service
@@ -45,3 +45,5 @@ TimeoutStartSec=0
 [Install]
 WantedBy=multi-user.target
 ```
+5. ### enable your custom service
+    - `sudo systemctl enable my-service.service`
