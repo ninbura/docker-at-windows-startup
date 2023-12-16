@@ -30,7 +30,7 @@ The purpose of this repository is to assist with setting up services in Linux & 
 4. ### Create a systemd service file to start your Docker containers at boot
     - your service file must created in `/etc/systemd/system` (`sudo touch /etc/systemd/system/my-service.service`)
     - replace bracketed info fields with proper info
-    - ```service
+      ```service
       [Unit]
       Description=[description of service]
       Requires=docker.service
