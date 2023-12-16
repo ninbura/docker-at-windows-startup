@@ -55,11 +55,11 @@ The purpose of this repository is to assist with setting up services in Linux & 
 6. ### create a scheduled task in Windows that starts your wsl image at boot
     1. clone this repository to a direcoty **in Windows**
     2. in the root of your cloned repository add a `config.json` with the follwing content (remove comment)
-      ```json
-      {
-            "imageName": "your-wsl-image-name" // ie "Ubuntu"
-      }
-      ```
+       ```json
+       {
+           "imageName": "your-wsl-image-name" // ie "Ubuntu"
+       }
+       ```
     3. right click `~register-scheduled-task.bat` and run as administrator
     4. follow prompts
         - You will be prompted to enter the password for the current user.
