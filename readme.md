@@ -45,7 +45,7 @@ The purpose of this repository is to assist with setting up services in Linux & 
       [Install]
       WantedBy=multi-user.target
       ```
-5. ### enable your custom service
+5. ### enable your custom service with systemd
 ```bash
 sudo systemctl enable my-service.service
 ```
@@ -57,4 +57,23 @@ sudo systemctl enable my-service.service
             "imageName": "your-wsl-image-name" // ie "Ubuntu"
       }
       ```
-    3. 
+    3. right click `~register-scheduled-task.bat` and run as administrator
+    4. follow prompts
+        - You will be prompted to enter the password for the current user.
+        - This is required as WSL is bound per user, you can't start WSl as the System user.
+        - Your password is captured as a secure string and is never stored or converted to plain text.
+7. ### reboot your computer
+    - If you followed all the previous steps correctly Docker / your containers should be running.
+    - you can verify if your containers are running by using the `docker ps` command in bash (on linux).
+
+# troubleshooting
+There's a lot that can go wrong here, it would be impossible to cover everyting. So, I'll just cover some basics. If your Docker / your containers aren't running, try the folling.
+1. verify that docker is running - `sudo systemctl status docker`
+    - If Docker failed to start, try diagnosing with `sudo dockerd`.
+3. verify that your custom service is running - `sudo systemctl status my-service.service`
+    - If your custom service failed to start, try and troubleshoot the contents of the printed status.
+5. verify that your Windows scheduled task exectuted
+    - there should be a `start-wsl.log` in the root of your cloned repository
+    - if there is no log file you can view failed scheduled tasks in Windows' Event Viewer
+        - 
+
