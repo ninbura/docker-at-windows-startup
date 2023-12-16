@@ -14,13 +14,11 @@ The purpose of this repository is to assist with setting up services in Linux & 
 1. ### Verify that systemd is enabled in your wsl image.
     - this should be enabled by default
     - you can verify that this is case by checking you `wsl.conf` file in `/etc/wsl.conf`
-    - Said configuration file should contain the following lines.
+    - Said configuration file should contain the following lines (if not, add them).
   ```conf
   [boot]
   systemd=true
   ```
-    - If not, add them.
-    - If wsl.conf does not exist, create it first.
 2. ### [Install Docker](https://docs.docker.com/engine/install/ubuntu)
     - make sure to [uninstall old versions of Docker](https://docs.docker.com/engine/install/ubuntu/#uninstall-old-versions) first
     - After verifying that old versions have been uninstall, I recommend using their [convenience script](https://docs.docker.com/engine/install/ubuntu/#install-using-the-convenience-script) for installation.
