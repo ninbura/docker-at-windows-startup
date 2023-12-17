@@ -34,6 +34,8 @@ The purpose of this repository is to assist with setting up services in Linux & 
       ```service
       [Unit]
       Description=[description of service]
+      StartLimitIntervalSec=5
+      StartLimitBurst=5
       Requires=docker.service
       After=docker.service
     
