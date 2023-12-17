@@ -70,7 +70,7 @@ The purpose of this repository is to assist with setting up services in Linux & 
     - you can verify if your containers are running by using the `docker ps` command in bash (on linux).
 
 # troubleshooting
-There's a lot that can go wrong here, it would be impossible to cover everyting. So, I'll just cover some basics. If your Docker / your containers aren't running, try the folling.
+There's a lot that can go wrong here, it would be impossible to cover everyting. So, I'll just cover some basics. If Docker / your containers aren't running, try the folling.
 1. verify that docker is running - `sudo systemctl status docker`
     - If Docker failed to start, try diagnosing with `sudo dockerd`.
 2. verify that your custom service is running - `sudo systemctl status my-service.service`
